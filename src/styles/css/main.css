@@ -825,7 +825,7 @@ iframe {
   top: 0;
   left: 0;
   z-index: 11;
-  transform: translateY(35%) translateX(100%);
+  transform: translateY(35%) translateX(200%);
   transition: 0.5s;
   display: flex;
   align-items: center;
