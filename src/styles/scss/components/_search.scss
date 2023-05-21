@@ -1,0 +1,124 @@
+@use '../abstracts/' as a;
+
+.search-bar-container {
+    box-shadow:inset 0 0 25px 15px rgba(27, 3, 3, 0.968);
+    width: 100%;
+    min-height: 180px;
+    background: url('./../../assets/images/searcher-5.png') no-repeat center;
+    background-size: cover;
+    @include a.flex();
+    padding: 2rem 0;
+    
+    .search-bar{
+        position: relative;
+    }
+
+    input {
+        padding: 1rem 5rem;
+        font-size: 2.4rem;
+        border-radius: 0.5rem;
+        border: none;
+        background-color: rgba(240, 248, 255, 0.799);
+        color: rgba(0, 0, 0, 0.696);
+        box-shadow: 0 0 8px -4px black;
+    }
+    input:placeholder-shown {
+        background-color: rgba(0, 0, 0, 0.525);
+        color:rgba(240, 248, 255, 0.888);
+    }
+    input:focus{
+        outline: none;
+    }
+}
+.speech-icon {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.683);
+    transform: scale(2.5);
+    text-align: right;
+    position: absolute;
+    right: 8%;
+    transform: translate(50%, -25%) scale(2.4);
+    top: 50%;
+}
+
+.voice-search-prompt {
+    @include a.absolute(rgba(245, 245, 245, 0.411));
+    backdrop-filter: blur(6px);
+    position: fixed;
+    z-index: 1000;
+    right: 0;
+    bottom: 0;
+    @include a.flex(column);
+
+    p {
+        color: black;
+        font-size: 2rem;
+    }
+}
+
+// For Voice Search Prompt
+.listen-wrapper {
+    p {
+        font-size: 1.45rem;
+        text-align: center;
+    }
+}
+
+.dot-container {
+    @include a.flex();
+    gap: 1rem;
+    margin: 2rem 0;
+
+    div {
+       width: 20px;
+       height: 20px;
+       border-radius: 50%;
+       transform: scale(0);
+    }
+    .bl {
+        background-color: blue;
+        animation: stretch0 2s;
+        animation-iteration-count: infinite;
+    }.rd {
+        background-color: red;
+        animation: stretch1 2s;
+        animation-iteration-count: infinite;
+    }.ylw {
+        background-color: yellow;
+        animation: stretch2 2s;
+        animation-iteration-count: infinite;
+    }.grn {
+        background-color: green;
+        animation: stretch3 2s;
+        animation-iteration-count: infinite;
+    }
+}
+
+@keyframes stretch0 {
+    0%{transform: scale(0.8, 0); border-radius: 8px;}
+    25%{transform: scale(0.8, 4); border-radius: 8px;}
+    50%{transform: scale(0.8, 3); border-radius: 8px;}
+    75%{transform: scale(0.8, 4); border-radius: 8px;}
+    100%{transform: scale(0.8, 2); border-radius: 8px;}
+}
+@keyframes stretch1 {
+    0%{transform: scale(0.8, 0); border-radius: 8px;}
+    25%{transform: scale(0.8, 3); border-radius: 8px;}
+    50%{transform: scale(0.8, 4); border-radius: 8px;}
+    75%{transform: scale(0.8, 3); border-radius: 8px;}
+    100%{transform: scale(0.8, 2); border-radius: 8px;}
+}
+@keyframes stretch2 {
+    0%{transform: scale(0.8, 0); border-radius: 8px;}
+    25%{transform: scale(0.8, 4); border-radius: 8px;}
+    50%{transform: scale(0.8, 3); border-radius: 8px;}
+    75%{transform: scale(0.8, 4); border-radius: 8px;}
+    100%{transform: scale(0.8, 2); border-radius: 8px;}
+}
+@keyframes stretch3 {
+    0%{transform: scale(0.8, 0); border-radius: 8px;}
+    25%{transform: scale(0.8, 3); border-radius: 8px;}
+    50%{transform: scale(0.8, 4); border-radius: 8px;}
+    75%{transform: scale(0.8, 3); border-radius: 8px;}
+    100%{transform: scale(0.8, 2); border-radius: 8px;}
+}

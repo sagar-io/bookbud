@@ -1,0 +1,88 @@
+@use '../abstracts/' as a;
+
+.file-uploader-container {
+    margin-top: 2rem;
+}
+
+.tab-states {
+    @include a.flex();
+    margin-bottom: 2.5rem;
+
+    div {
+        border-radius: 50%;
+        width: 40px;
+        font-size: 1.2rem;
+        height: 40px;
+        @include a.flex();
+        color: gray;
+        margin-right: 2.5rem;
+        position: relative;
+    }
+
+    div#first::after, div#second::after {
+        transition: background-color 0.6s;
+        content: '';
+        position: absolute;
+        width: 2.5rem;
+        height: 3px;
+        left: 100%;
+        background-color: a.$light-clr-a;
+    }
+}
+
+.first-tab, .second-tab, .third-tab {
+    border: 1px solid gray;
+    padding: 2rem;
+    @include a.flex(column);
+    gap: 3rem;
+
+    label {
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+
+    .light {
+        font-size: 0.85rem;
+        color: gray;
+        display: block;
+        margin-top: 1rem;
+        text-align: center;
+    }
+
+    input {
+        padding: 0.65rem 2rem;
+        font-size: 1.2rem;
+    }
+}
+
+.second-tab, .third-tab {
+    .upload-label {
+        font-size: 5rem;
+        color: a.$dark-clr-c;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        @include a.flex();
+        transition: 0.4s;
+    }
+    .upload-label:hover {
+        transform: rotate(-45deg);
+    }
+    input {
+        display: none;
+    }
+}
+
+.thanks-tab {
+    padding-top: 2rem;
+    @include a.flex(column);
+    gap: 1rem;
+
+    h2 {
+        font-size: 2rem;
+    }
+    .icon {
+        font-size: 4rem;
+        color: a.$light-clr-a;
+    }
+}

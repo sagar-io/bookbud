@@ -1,0 +1,155 @@
+@use '../abstracts/' as a;
+
+.sign-in-container,
+.sign-up-container {
+    h1 {
+        font-size: 2.65rem;
+        color: a.$light-clr-a;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    box-shadow: 0 0 10px -4px black;
+    margin: 3rem auto;
+    background-color: a.$dark-clr-c;
+    width: max-content;
+    text-align: center;
+    padding: 2rem 3rem;
+    border-radius: 0.5rem;
+
+    @media (max-width: 500px) {
+        padding: 1rem 2rem;
+
+        h1 {
+            font-size: 1.6rem;
+        }
+    }
+}
+
+.sign-in-form,
+.sign-up-form,
+.forget-password-form,
+.change-password-form {
+    border-radius: 0.5rem;
+    @include a.flex(column);
+    gap: 1rem;
+
+    input {
+        padding: 0.75rem 2rem;
+        font-size: 1.2rem;
+        border-radius: 0.4rem;
+        border: none;
+        background-color: rgba(255, 255, 255, 0.703);
+
+        @media (max-width: 500px) {
+            padding: 0.2rem 0.8rem;
+            font-size: 1rem;
+        }
+    }
+
+    button {
+        @extend %general-button;
+        margin-top: 1.5rem;
+    }
+
+    button:hover {
+        transform: translateY(-0.15rem);
+    }
+
+    button:disabled {
+        opacity: 0.4;
+    }
+}
+
+%general-button {
+    margin-top: 0.8rem;
+    font-size: 1.3rem;
+    padding: 0.4rem 0;
+    width: 100%;
+    border-radius: 1.4rem;
+    border: none;
+    color: a.$dark-clr-b;
+    background-color: a.$light-clr-a;
+    cursor: pointer;
+    transition: transform 200ms ease-in;
+}
+
+.popup-sign-in-btn {
+    @extend %general-button;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
+    padding: 0.4rem 0.7rem;
+
+    .icon {
+        font-size: 1.35rem;
+    }
+
+    p {
+        margin: 0;
+    }
+}
+
+.google-popup-sign-in-btn {
+    background-color: royalblue;
+    color: #fff;
+
+    .icon {
+        background-color: white;
+        padding: 3px;
+        border-radius: 50%;
+    }
+}
+
+.github-popup-sign-in-btn {
+    background-color: black;
+    color: #fff;
+    padding: 0.65rem 0.7rem;
+}
+
+.forget-password-container {
+    margin: 8rem auto 0 auto;
+    background-color: a.$dark-clr-c;
+    padding: 3rem;
+    width: fit-content;
+    text-align: center;
+
+    h1 {
+        color: a.$light-clr-a;
+        margin-bottom: 3rem;
+    }
+}
+
+.forget-password-link {
+    margin-top: 0.8rem;
+    display: block;
+    color: gray !important;
+}
+
+.sign-up-link {
+    color: gray;
+
+    a {
+        color: white;
+    }
+}
+
+.ques-mark {
+    display: inline-block;
+    transition: transform 200ms ease-in;
+}
+
+.forget-password-link:hover .ques-mark {
+    transform: rotate(180deg);
+}
+
+.change-password-form {
+    background-color: a.$dark-clr-c;
+    width: max-content;
+    padding: 3rem 3.5rem;
+    margin: 2rem auto 0 auto;
+}

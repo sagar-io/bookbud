@@ -1,0 +1,25 @@
+.video-container {
+
+}
+
+iframe {
+    display: block;
+    margin: 6rem auto;
+    width: 800px;
+    height: 475px;
+    @media (max-width: 990px) {
+        width: 600px;
+        height: 350px;
+    }
+    @media (max-width: 650px) {
+       border-radius: 1.7rem;
+        width: 400px;
+        height: 250px;
+    }
+    @media (max-width: 430px) {
+        border-radius: 1.7rem;
+         width: 375px;
+         height: 250px;
+     }
+    border-radius: 2.5rem;
+}

@@ -1,0 +1,24 @@
+@use './typography';
+@use '../abstracts/' as a;
+
+body {
+    font-family: typography.$font-stack;
+    margin: 0;
+    // background-color: white !important;
+    background-color: a.$light-clr-b !important;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: typography.$font-stack-heading;
+    font-weight: 400;
+    color: a.$dark-clr-c;
+}
+
+h1 {
+    font-weight: 500;
+}
+
+.app {
+    overflow-x: hidden;
+}

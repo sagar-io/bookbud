@@ -1,0 +1,21 @@
+@use '../abstracts/' as a;
+
+.standard {
+    width: 90%;
+    margin: 5rem auto;
+
+    h1, h4 {
+        margin: 0;
+        text-align: center;
+    }
+    h1 {
+        @include a.std-logo-size();
+        font-size: 4rem;
+        text-decoration: overline;
+    }
+    h4 {
+        font-size: 1.2rem;
+        font-variant: small-caps;
+        margin-bottom: 3.7rem;
+    }
+}

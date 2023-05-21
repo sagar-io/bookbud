@@ -1,0 +1,76 @@
+@use '../abstracts/' as a;
+
+.hero-section {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 600px;
+    background: url('../../assets/images/searcher-1.jpg') no-repeat;
+    background-position: center;
+    transition: background-position 0.3s ease-out;
+    background-size: 2000px;
+}
+.hero-section::after {
+    @include a.absolute(rgba(0, 0, 0, 0.86));
+    box-shadow: inset 5px 5px 30px 90px rgba(0, 0, 0, 0.626);
+    z-index: -1;
+}
+
+.hero-text {
+    font-size: 2rem;
+    color: a.$light-clr-b;
+    color: gray;
+    text-align: justify;
+    display: flex;
+    justify-content: space-between;
+    max-width: 900px;
+    gap: 1rem;
+}
+.hero-description {
+    font-size: 2.1rem;
+    line-height: 1.3;
+    @media (max-width: 1200px) {
+        font-size: 1.9rem;
+        padding: 0 2rem;
+    }
+    @media (max-width: 1000px) {
+        padding: 0 3rem;
+    }
+    @media (max-width: 900px) {
+        font-size: 1.6rem;
+    }
+    @media (max-width: 700px) {
+        font-size: 1.3rem;
+    }
+    @media (max-width: 500px) {
+        font-size: 1.1rem;
+    }
+    width: 100%;
+    text-shadow: 0 0 12px black;
+}
+
+.hero-text p {
+    margin: 0;
+}
+
+.hero-quot {
+    display: none;
+  border-left: 2px solid green;
+  border-bottom: 2px solid green;
+  border-radius: 0 0 50% 0;
+}
+
+.highlight {
+background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(49,133,78,1) 1.9%, rgba(43,40,40,1) 100.2% );
+font-weight: bold;
+}
+
+.start-btn {
+    margin-top: 4.5rem;
+}
+
+

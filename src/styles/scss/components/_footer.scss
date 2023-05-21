@@ -1,0 +1,117 @@
+@use '../abstracts/' as a;
+
+.footer {
+    background-color: a.$dark-clr-c;
+    color: a.$light-clr-a;
+    padding: 2rem 2rem 7.5rem 2rem; 
+    text-align: center;
+
+    a {
+        color: a.$light-clr-b;
+        text-decoration: none;
+    }
+    a:hover{
+        color: a.$light-clr-a;
+    }
+    ul{
+        list-style: circle;
+    }
+    li{
+        padding: 0.5rem;
+    }
+
+    position: relative;
+    .social-links {
+        position: absolute;
+        bottom: 0;
+        right: 8%;
+        @include a.flex(column);
+        gap: 1.8rem;
+
+        a {
+            transform: scale(2) translate(-50%, -50%); 
+            color: rgba(182, 232, 182, 0.689);
+        }
+        @media (max-width: 700px) {
+            @include a.flex(row);
+            left: 15%;
+        }
+    }
+}
+
+.footer-sign-in {
+    position: relative;
+}
+
+.footer-sign-in::after{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 20%;
+    @media (max-width: 1000px) {
+        left: 0;
+    }
+    width: 150px;
+    height: 150px;
+    background: url('../../assets/images/thumbs-up-b.png') no-repeat;
+    background-size: 100px;
+    animation: tear 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: scale(0);
+    opacity: 0;
+}
+@keyframes tear{
+    0%{transform: scale(0)}
+    50%{
+        transform: scale(1); 
+        opacity: 1;
+     }
+    100%{transform: scale(0)}
+}
+
+.footer-parteners {
+    margin: 2rem 0 2rem 0;
+    padding: 2.8rem 0;
+    border-top: 1px solid rgba(184, 181, 181, 0.251);
+    border-bottom: 1px solid rgba(184, 181, 181, 0.251);
+    
+    h2 {
+        color: rgb(7, 44, 8);
+    }
+}
+
+.parteners-container {
+    margin-top: 3rem;
+    @include a.flex();
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1.3rem;
+
+    img {
+        width: 190px;
+        height: 60px;
+        border-radius: 0.4rem;
+        @media (max-width: 700px) {
+            max-width: 150px;
+        }
+    }
+}
+
+.footer-links-container {
+    margin: 1rem 0 0 0;
+    @include a.flex();
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    h3 {
+        text-align: center;
+        color: rgb(7, 44, 8);
+    }
+    .links {
+        text-align: left;
+        @media (max-width: 700px) {
+            font-size: 0.8rem;
+        }
+    }
+}

@@ -1,0 +1,82 @@
+@use '../abstracts/' as a;
+
+.btn-x {
+    padding: 0.8rem 3rem;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    // background-color: rgb(40, 40, 202);
+    background-color: a.$dark-clr-c;
+    color: a.$light-clr-a;
+    border-radius: 0.6rem;
+    box-shadow: 0 0 7px 0 black;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-x::before {
+    @include a.absolute(black);
+    border-radius: 0.3rem;
+    // display: none;
+    transform: scale(0) ;
+    transition: transform 300ms ease-in;
+    z-index: -1;
+    transform-origin: bottom right;
+}
+.btn-x:hover::before {
+    transform: scale(1);
+    // display: block;
+    transform-origin: top left;
+}
+
+.line-hover {
+    position: relative;
+    // padding: 0;
+}
+
+.line-hover::after {
+   @include a.absolute(gray);
+   height: 2px;
+   bottom: 0.3rem;
+//    width: 80%;
+   top: unset;
+   transform: scaleX(0);
+   transition: transform 250ms ease-in;
+   transform-origin: right;
+}
+.line-hover:hover::after {
+    transform-origin: left;
+    transform: scale(1);
+}
+
+.btn-y {
+    padding: 0.8rem 3rem;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    // background-color: rgb(40, 40, 202);
+    background-color: a.$dark-clr-a;
+    color: a.$light-clr-a;
+    border-radius: 0.6rem;
+    box-shadow: 0 0 8px -2px a.$dark-clr-a;
+    position: relative;
+    z-index: 1;
+}
+.btn-y:hover {
+    transform: translateY(-1px);
+}
+
+.regular-btn {
+    width: max-content;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.8rem;
+    border: 2px solid gray;
+    cursor: pointer;
+    background-color: transparent;
+    color: gray;
+    border-radius: 0.3rem;
+}
+.regular-btn:hover {
+    color: white;
+    background-color: black;
+}
