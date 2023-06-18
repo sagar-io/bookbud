@@ -11,7 +11,7 @@ const Features = () => {
     />
   ));
   return (
-    <div className="standard">
+    <div className="standard features-wrapper">
       <h1>Features</h1>
       <h4>Why Choose us ?</h4>
       <div className="features">{featuresElements}</div>

@@ -204,15 +204,15 @@ class Firebase {
         console.log(error);
       });
   };
-  signInWithGoogle = () => {
+  signInWithGoogle = () =>
     signInWithPopup(auth, googleProvider)
-      .then(() => console.log("Signin with google successfull..."))
-      .catch((err) => console.log(err));
-  };
+      .then(() => "Signin with google successful...")
+      .catch((err) => err);
 
   signInWithGithub = async () => {
-    return await signInWithPopup(auth, githubProvider);
-  };
+    await signInWithPopup(auth, githubProvider)
+    return "Signin with Github successful"
+  }
 }
 
 export default Firebase;

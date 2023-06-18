@@ -1,5 +1,8 @@
 @use '../abstracts/' as a;
 
+.features-wrapper {
+    scroll-snap-align: start;
+}
 .features {
     width: 100% !important;
     padding: 3rem;

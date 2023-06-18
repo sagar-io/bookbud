@@ -3,6 +3,7 @@
 .standard {
     width: 90%;
     margin: 5rem auto;
+    scroll-snap-type: y mandatory;
 
     h1, h4 {
         margin: 0;

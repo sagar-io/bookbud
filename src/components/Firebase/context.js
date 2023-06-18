@@ -1,5 +1,5 @@
-import React from 'react'
-const FirebaseContext = React.createContext(null)
+import {createContext} from 'react'
+const FirebaseContext = createContext(null)
 
 // Higher Order Component (HOC)
 export const withFirebase = Component => props => (

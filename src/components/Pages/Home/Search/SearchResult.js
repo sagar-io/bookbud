@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import EBook from "../EBooks/EBook";
 import { withFirebase } from "../../../Firebase";
+import {Loader} from './Loader'
 
 const SearchResult = (props) => {
   const [eBooksData, setEBooksData] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     let listener = props.firebase.readDataFromDB(handleEBookData, "eBooks/");
@@ -16,6 +18,7 @@ const SearchResult = (props) => {
       ...eBooksDataObj[eBookName],
     }));
     setEBooksData(eBooksDataArr);
+    setLoading(false)
   }
 
   const searchedElements = eBooksData
@@ -29,7 +32,10 @@ const SearchResult = (props) => {
       />
     ));
 
-  return <div className="all-ebooks">{searchedElements}</div>
+  return (<div className="all-ebooks">
+    {loading && <Loader />}
+    {searchedElements}
+    </div>)
 
   function isMatched(title) {
     return title.toLowerCase().includes(props.searchQuery.toLowerCase());

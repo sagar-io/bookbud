@@ -1,6 +1,7 @@
 @use '../abstracts/' as a;
 
 .hero-section {
+    scroll-snap-align: start;
     position: relative;
     z-index: 5;
     display: flex;

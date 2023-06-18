@@ -1,5 +1,5 @@
 import {Routes, Route} from 'react-router-dom'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createContext } from 'react';
 import { withFirebase } from '../Firebase';
 import Navigation from '../Navigation'
 import '../../styles/css/main.css'
@@ -14,6 +14,8 @@ import AdminPage from '../Admin';
 import UploadPage from '../Pages/Uploader'
 import {AuthUserContext} from '../Session'
 import { TopLogo } from '../Top Logo';
+import Providers from '../Auth/SignUp/Providers';
+import { SignUpWithEmail } from '../Auth/SignUp/SignUpWithEmail';
 
 const App = (props) => {
     const [authUser, setAuthUser] = useState(null)
@@ -36,7 +38,10 @@ const App = (props) => {
           <Navigation />
             <Routes>
                 <Route path={ROUTES.SIGN_IN} element={<SignInPage />}/>
-                <Route path={ROUTES.SIGN_UP} element={<SignUpPage />}/>
+                <Route path={ROUTES.SIGN_UP} element={<SignUpPage />}>
+                    <Route path='/signup' element={<Providers/>}/>
+                    <Route path='/signup/sign-up-with-email' element={<SignUpWithEmail/>}/>
+                </Route>
                 <Route path={ROUTES.LANDING} element={<LandingPage />}/>
                 <Route path={ROUTES.HOME} element={<HomePage />}/>
                 <Route path={ROUTES.UPLOAD} element={<UploadPage/>}/>

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import * as ROUTES from "../../../constants/routes";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const SignInPage = () => (
   <div className="sign-in-container">
@@ -87,8 +88,9 @@ const SignInFormBase = (props) => {
 const SignInWithGoogleBase = (props) => {
   const navigateProgrammatically = useNavigate();
 
-  function handleSignIn() {
-    props.firebase.signInWithGoogle();
+ async function handleSignIn() {
+    const status = await props.firebase.signInWithGoogle();
+    console.log(status)
     navigateProgrammatically(ROUTES.HOME);
   }
   return (
@@ -108,7 +110,7 @@ const SignInWithGithubBase = (props) => {
   async function handleSignIn() {
     try {
       const result = await props.firebase.signInWithGithub();
-      console.log("Signin with Github Successful...");
+      console.log(result)
       props.firebase.auth["allowWithoutEmailVerification"] = true;
       navigateProgrammatically(ROUTES.HOME);
     } catch (err) {
@@ -126,8 +128,16 @@ const SignInWithGithubBase = (props) => {
   );
 };
 
+const SignInLink = () => (
+  <div>
+    <p>Already have an account ?</p>
+    <Link to={ROUTES.SIGN_IN}>Sign In &gt;</Link>
+  </div>
+)
+
 const SignInWithGithub = withFirebase(SignInWithGithubBase);
 const SignInWithGoogle = withFirebase(SignInWithGoogleBase);
 const SignInForm = withFirebase(SignInFormBase);
 
+export {SignInLink}
 export default SignInPage;

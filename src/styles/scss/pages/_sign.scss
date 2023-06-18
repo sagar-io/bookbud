@@ -1,7 +1,6 @@
 @use '../abstracts/' as a;
 
-.sign-in-container,
-.sign-up-container {
+.sign-in-container {
     h1 {
         font-size: 2.65rem;
         color: a.$light-clr-a;
@@ -29,7 +28,6 @@
 }
 
 .sign-in-form,
-.sign-up-form,
 .forget-password-form,
 .change-password-form {
     border-radius: 0.5rem;
@@ -130,13 +128,6 @@
     color: gray !important;
 }
 
-.sign-up-link {
-    color: gray;
-
-    a {
-        color: white;
-    }
-}
 
 .ques-mark {
     display: inline-block;

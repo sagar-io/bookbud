@@ -20,7 +20,7 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="landing-wrapper">
       <HeroSection />
       <Features />
       <FeaturedBooks />

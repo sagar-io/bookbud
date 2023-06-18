@@ -4,9 +4,12 @@
 body {
     font-family: typography.$font-stack;
     margin: 0;
-    // background-color: white !important;
     background-color: a.$light-clr-b !important;
     overflow-x: hidden;
+}
+
+html {
+    scroll-snap-type: y mandatory;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -21,4 +24,17 @@ h1 {
 
 .app {
     overflow-x: hidden;
+}
+
+.small-txt {
+    font-size: 0.9rem;
+    color: gray;
+}
+
+// below tag should be move to appropiate location
+.landing-wrapper {
+    scroll-snap-type: both mandatory;
+    scroll-snap-type: mandatory; /* for older browsers */
+    scroll-snap-points-y: repeat(100vh); /* for older browsers */
+    overflow-y: scroll;
 }
