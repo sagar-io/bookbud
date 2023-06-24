@@ -1,0 +1,18 @@
+@use '../abstracts/' as *;
+
+.error-page {
+    @include flex(column);
+
+    img {
+        width: 50%;
+        max-width: 450px;
+    }
+
+    p {
+        font-size: bold;
+        padding: 0;
+        margin-top: -2rem;
+        font-size: 1.6rem;
+        font-family: cursive;
+    }
+}

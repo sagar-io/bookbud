@@ -21,7 +21,6 @@ const Admin = (props) => {
 
         uid: uid
       }))
-      console.log(usersArr)
       setUsersRecords({users: usersArr, loading: false})
     }
 
@@ -34,7 +33,8 @@ const Admin = (props) => {
 
     return (
         <div>
-         <h1>Admin</h1>
+          <h1 style={{textAlign: 'center'}}>You're not a Admin</h1>
+         {/* <h1>Admin</h1>
           {loading && <p>Loading...</p>}
 
        <div>
@@ -43,7 +43,7 @@ const Admin = (props) => {
             <strong>Email</strong>
           </div>
           {usersElement}
-       </div>
+       </div> */}
       </div>
     )
 }

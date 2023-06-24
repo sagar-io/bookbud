@@ -46,7 +46,7 @@
         background-color: rgb(22, 33, 43);
         background-color: a.$dark-clr-c;
         background-color: a.$light-clr-b;
-        box-shadow: 0 0 8px -2px gray;
+        box-shadow: 0 0 8px -4px rgb(101, 101, 101);
 
         p {
             text-align: justify;
@@ -66,6 +66,10 @@
             @media (max-width: 820px) {
                 margin: 0;
                 padding: 0;
+            }
+            @media (max-width: 500px) {
+                margin: 1rem 0;
+                text-align: center;
             }
         }
 

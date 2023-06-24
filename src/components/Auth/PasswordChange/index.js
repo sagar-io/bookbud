@@ -25,8 +25,9 @@ const PasswordChangeForm = (props) => {
         setNewPasswordDetails((prevDetails) => ({...prevDetails, [e.target.name]: e.target.value}))
     }
     return (
-        <div >
+        <div>
             <form className='change-password-form'>
+            <h1>Change Password</h1>
             <input 
              type='password'
              name="password1"

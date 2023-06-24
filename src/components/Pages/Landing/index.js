@@ -1,5 +1,5 @@
 import HeroSection from "./HeroSection";
-import FeaturedBooks from "./FeaturedBooks";
+// import FeaturedBooks from "./FeaturedBooks";
 import Testimonials from "./Testimonials";
 import Features from "./Features";
 import Footer from "./Footer";
@@ -23,7 +23,7 @@ const LandingPage = () => {
     <div className="landing-wrapper">
       <HeroSection />
       <Features />
-      <FeaturedBooks />
+      {/* <FeaturedBooks /> */}
       <div className="video-container">
         <iframe
           className="hidden"

@@ -1,16 +1,18 @@
 @use '../abstracts/' as a;
 .main-logo-container {
-    // background-color: black;
     @include a.flex();
+    justify-content: space-around;
     border-bottom: 2px solid a.$dark-clr-c;
-    padding: 1rem 0.5rem;
+    padding: 1rem 3rem;
     gap: 2.4rem;
 }
 
 .m-logo {
     width: 80px;
-    position: absolute;
-    left: 8%;
+
+    @media (max-width: 500px) {
+        width: 55px;
+    }
 }
 
 .main-logo {
@@ -26,4 +28,14 @@
     // background-image: linear-gradient(160deg, #0093E9 0%, #06c9d7 40%, #0a4026 100%);
     // -webkit-text-fill-color: transparent;
     // -webkit-background-clip: text;
+}
+
+.profile-img-nav {
+    width: 50px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+
+    @media (max-width: 500px) {
+        width: 30px;
+    }
 }

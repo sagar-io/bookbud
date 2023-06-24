@@ -3,6 +3,7 @@ import { withFirebase } from "../../../Firebase";
 import * as ROUTES from "../../../../constants/routes";
 import { useState } from "react";
 import { GrServerCluster } from "react-icons/gr";
+import { updateDownloadingCount } from "./updateCount";
 
 const EBook = (props) => {
   const navigateTo = useNavigate();
@@ -35,7 +36,8 @@ const EBook = (props) => {
 
     if (props.firebase.auth.currentUser) {
       if (
-        props.firebase.auth.currentUser.emailVerified ||
+        props.firebase.auth.currentUser.providerData[0].providerId == "github.com"
+        ||
         props.firebase.auth.allowWithoutEmailVerification
       ) {
         setIsDownloading(true);
@@ -43,6 +45,11 @@ const EBook = (props) => {
           props.downloadAddress,
           props.title,
           setIsDownloading
+        );
+        props.firebase.updateUserProfileData(
+          props.firebase.auth.currentUser.uid,
+          "downloadedBooks",
+          props.title
         );
       } else {
         alert("Please Verify Your email address First!");

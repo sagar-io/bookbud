@@ -1,8 +1,10 @@
 import { withFirebase } from "../../Firebase"
+import { useNavigate } from "react-router-dom"
 
-const SignOutButtonBase = (props) => (
-    <button className="regular-btn" onClick={props.firebase.doSignOut}>Log out</button>
-)
+const SignOutButtonBase = (props) => {
+    let navigate = useNavigate();
+    return <button className="btn-danger" onClick={() => {props.firebase.doSignOut(); navigate('/signin')} }>Log out</button>
+}
 
 const SignOutButton = withFirebase(SignOutButtonBase)
 

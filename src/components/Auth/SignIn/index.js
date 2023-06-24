@@ -88,9 +88,14 @@ const SignInFormBase = (props) => {
 const SignInWithGoogleBase = (props) => {
   const navigateProgrammatically = useNavigate();
 
- async function handleSignIn() {
+  async function handleSignIn() {
     const status = await props.firebase.signInWithGoogle();
-    console.log(status)
+    props.firebase.writeUserDataToDB(
+      status.user.uid,
+      status.user.displayName,
+      status.user.email,
+      status.user.photoURL
+    );
     navigateProgrammatically(ROUTES.HOME);
   }
   return (
@@ -109,12 +114,16 @@ const SignInWithGithubBase = (props) => {
 
   async function handleSignIn() {
     try {
-      const result = await props.firebase.signInWithGithub();
-      console.log(result)
-      props.firebase.auth["allowWithoutEmailVerification"] = true;
+      const status = await props.firebase.signInWithGithub();
+      props.firebase.writeUserDataToDB(
+        status.user.uid,
+        status._tokenResponse.screenName,
+        status._tokenResponse.email,
+        status.user.photoURL
+      );
       navigateProgrammatically(ROUTES.HOME);
     } catch (err) {
-      console.log("Couldn't Signin", err);
+      // console.log("Couldn't Signin", err);
     }
   }
   return (
@@ -133,11 +142,11 @@ const SignInLink = () => (
     <p>Already have an account ?</p>
     <Link to={ROUTES.SIGN_IN}>Sign In &gt;</Link>
   </div>
-)
+);
 
 const SignInWithGithub = withFirebase(SignInWithGithubBase);
 const SignInWithGoogle = withFirebase(SignInWithGoogleBase);
 const SignInForm = withFirebase(SignInFormBase);
 
-export {SignInLink}
+export { SignInLink };
 export default SignInPage;

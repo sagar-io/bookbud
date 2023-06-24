@@ -3,6 +3,7 @@ import { partnersData as partnerPublishersData } from "./partnerPublishersData";
 export const PartnerPublishers = () => {
   const partnersElement = partnerPublishersData.map((partner) => (
     <Publishers
+      key={`${partner.name}`}
       name={partner.name}
       url={partner.url}
       imgUrl={partner.imgUrl}

@@ -53,6 +53,18 @@
         padding: 0.65rem 2rem;
         font-size: 1.2rem;
     }
+    @media (max-width: 500px) {
+        label {
+            font-size: 1.2rem;
+        }
+        .light {
+            font-size: 0.65rem;
+        }
+        input {
+            padding: 0.65rem 1rem;
+            font-size: 1rem;
+        }
+    }
 }
 
 .second-tab, .third-tab {

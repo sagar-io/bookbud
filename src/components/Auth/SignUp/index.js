@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom'
-import SignUpForm from './SignUpForm'
+// import SignUpForm from './SignUpForm'/
 import * as ROUTES from '../../../constants/routes'
 import { SignUpProviders } from './SignUpProviders'
 
@@ -14,5 +14,5 @@ const SignUpLink = () => (
 )
 
 export default SignUpPage
-export {SignUpLink, SignUpForm}
+export {SignUpLink}
 

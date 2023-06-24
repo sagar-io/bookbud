@@ -12,7 +12,14 @@ import {
   GithubAuthProvider,
 } from "firebase/auth";
 // Realtime database
-import { getDatabase, onValue, ref, set } from "firebase/database";
+import {
+  getDatabase,
+  onValue,
+  ref,
+  set,
+  update,
+  push,
+} from "firebase/database";
 // Firebase Storage for Download things
 import {
   getStorage,
@@ -64,7 +71,7 @@ class Firebase {
 
   sendEmailVerification = (user) =>
     sendEmailVerification(user).then(() => {
-      console.log("Email Verification Sent.....");
+      // console.log("Email Verification Sent.....");
     });
 
   doSignInWithEmailAndPassword = (email, password) =>
@@ -73,21 +80,33 @@ class Firebase {
   doSendSignInLinkToEmail = (email) => {
     sendSignInLinkToEmail(this.auth, email, actionCodeSettings)
       .then(() => {
-        console.log("Email Link Sent Successfully !");
+        // console.log("Email Link Sent Successfully !");
       })
       .catch((error) => {
-        console.log(error.code + " " + error.message);
+        // console.log(error.code + " " + error.message);
       });
   };
+  // writeUserDataToDB;
 
   doSignOut = () => this.auth.signOut();
 
   doPasswordReset = (email) => sendPasswordResetEmail(this.auth, email);
   doPasswordUpdate = (password) => updatePassword(password);
 
-  writeDataToDB = (uid, userName, email) => {
-    return set(ref(db, `users/${uid}`), { userName, email });
+  writeUserDataToDB = (uid, userName, email, profilePhoto) => {
+    return update(ref(db, `users/${uid}`), {
+      userName,
+      email,
+      profilePhoto: profilePhoto,
+    });
   };
+
+   updateUserProfileData = (uid, areaToBeUpdated, itemToBeAdded) => {
+    const userListAreaRef = ref(db, `users/${uid}/${areaToBeUpdated}`);
+    const newItemRef = push(userListAreaRef);
+
+    set(newItemRef, itemToBeAdded)
+  }
 
   writeEBookDataToDB = (title, eBookDownloadUrl, eBookCoverDownloadUrl) => {
     return set(ref(db, `eBooks/${title}`), {
@@ -128,7 +147,6 @@ class Firebase {
           eBookDownloadUrl = downloadUrl;
 
           if (eBookCoverDownloadUrl && eBookDownloadUrl) {
-            console.log("my func 1 running.");
             this.writeEBookDataToDB(
               file.eBookName,
               eBookDownloadUrl,
@@ -148,10 +166,10 @@ class Firebase {
     uploadeBookCoverTask.on(
       "state_changed",
       (snap) => {
-        console.log(
-          "eBook Cover Progress ->" +
-            (snap.bytesTransferred / snap.totalBytes) * 100
-        );
+        // console.log(
+        //   "eBook Cover Progress ->" +
+        //     (snap.bytesTransferred / snap.totalBytes) * 100
+        // );
         setProgressLevel((prev) => ({
           ...prev,
           ["eBookCoverProgressLevel"]:
@@ -159,14 +177,13 @@ class Firebase {
         }));
       },
       (err) => {
-        console.log(err);
+        // console.log(err);
       },
       () => {
         getDownloadURL(eBookCoverStorageRef).then((downloadUrl) => {
           eBookCoverDownloadUrl = downloadUrl;
 
           if (eBookCoverDownloadUrl && eBookDownloadUrl) {
-            console.log("my func 2 running.");
             this.writeEBookDataToDB(
               file.eBookName,
               eBookDownloadUrl,
@@ -198,21 +215,20 @@ class Firebase {
   getAllBooksList = () => {
     listAll(sRef(storage, "ebooks/"))
       .then((res) => {
-        console.log(res.items[0].name);
+        // console.log(res.items[0].name);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
   signInWithGoogle = () =>
     signInWithPopup(auth, googleProvider)
-      .then(() => "Signin with google successful...")
+      .then((result) => result)
       .catch((err) => err);
 
   signInWithGithub = async () => {
-    await signInWithPopup(auth, githubProvider)
-    return "Signin with Github successful"
-  }
+    return await signInWithPopup(auth, githubProvider);
+  };
 }
 
 export default Firebase;

@@ -1,8 +1,13 @@
 @use "../abstracts/" as a;
 
 .sign-up-container {
+  overflow-x: hidden;
   width: 100%;
   padding: 3rem 0;
+
+  @media (max-width: 500px) {
+    padding: 1.5rem 0;
+  }
 }
 
 .sign-up-provider-wrapper {
@@ -25,26 +30,44 @@
       border-left: 3px solid rgb(79, 77, 77);
       border-radius: 0.6rem;
     }
+    @media (max-width: 500px) {
+    }
   }
   .small-txt {
     margin-top: -1rem;
     max-width: 400px;
+
+    @media (max-width: 500px) {
+      max-width: 275px;
+    }
   }
   .continue-txt {
     margin: 3rem 0 1rem 0;
     color: black;
     font-weight: bold;
   }
+
+  @media (max-width: 800px) {
+    flex-direction: column-reverse;
+  }
 }
 
 .providers-wrapper {
-    padding-top: 1.2rem;
+  padding-top: 1.2rem;
+
+  h1 {
+    @media (max-width: 500px) {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+  }
 }
 
 .providers {
   @include a.flex();
   gap: 1rem;
   margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
 .provider {
@@ -65,8 +88,8 @@
   }
 }
 .provider:hover {
-    background-color: darken(a.$dark-clr-c, 8%);
-    color: #fff;
+  background-color: darken(a.$dark-clr-c, 8%);
+  color: #fff;
 }
 
 .sign-up-form {
@@ -82,22 +105,23 @@
     border: none;
     border-left: 5px solid green;
     background-color: rgba(255, 255, 255, 0.703);
-    box-shadow: 1px 1px 8px -3px gray;
+    box-shadow: 1px 1px 8px -5px gray;
+    
 
     @media (max-width: 500px) {
-      padding: 0.2rem 0.8rem;
+      padding: 0.55rem 1rem;
       font-size: 1rem;
     }
   }
   input::placeholder {
     font-size: 1rem;
+    color: rgba(128, 128, 128, 0.621);
   }
   input:focus {
     outline: none;
   }
 
   button {
-    // @extend %general-button;
     margin-top: 1.5rem;
   }
 

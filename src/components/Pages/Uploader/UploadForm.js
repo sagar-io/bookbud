@@ -8,8 +8,6 @@ const UploadForm = (props) => {
     3: false,
     4: false,
   });
-  // const enableDownloadBtn = props.file.eBookName && props.file.eBook && props.file.eBookCover
-
   function handleNext(e) {
     switch (e.target.name) {
       case "1":
@@ -20,9 +18,6 @@ const UploadForm = (props) => {
         break;
       case "3":
         setTabs((prev) => ({ ...prev, [3]: false, [4]: true }));
-        break;
-      //  case '4':
-      //         setTabs(prev=>({...prev, [3]: false, [4]: true}))
     }
   }
   function handleReUpload() {
@@ -49,7 +44,6 @@ const UploadForm = (props) => {
           </div>
         </div>
       )}
-
       {tabs[1] && (
         <div className="first-tab">
           <label htmlFor="eBookName">
@@ -135,7 +129,6 @@ const UploadForm = (props) => {
           >
             Upload
           </button>
-          {/* <button name='3' className='btn-y' disabled={!props.file.eBookCover} onClick={handleNext}>Upload</button> */}
         </div>
       )}
 
@@ -151,8 +144,6 @@ const UploadForm = (props) => {
       )}
 
       {props.error && <div>{props.error}</div>}
-
-      {/* <progress value={progressLevel} max="100">{progressLevel}</progress> */}
     </div>
   );
 };

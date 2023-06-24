@@ -67,7 +67,6 @@ const SignUpFormBase = (props) => {
   );
 
   function handleFormSubmit(e) {
-    // props.firebase.doSendSignInLinkToEmail(newUserDetail.email)
     props.firebase
       .doCreateUserWithEmailAndPassword(
         newUserDetail.email,
@@ -75,12 +74,7 @@ const SignUpFormBase = (props) => {
       )
       .then((authUser) => {
         props.firebase.sendEmailVerification(authUser.user);
-        return props.firebase.writeDataToDB(authUser.user.uid, userName, email);
-      })
-      .then(() => {
-        // props.firebase.readDataFromDB()
-        console.log(props.firebase.auth.currentUser.emailVerified);
-        console.log(props.firebase.auth.currentUser);
+        return props.firebase.writeUserDataToDB(authUser.user.uid, userName, email, '');
       })
       .then(() => {
         setNewUserDetail({ ...initialSignUpUserState });

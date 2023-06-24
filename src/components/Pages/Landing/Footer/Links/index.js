@@ -3,15 +3,15 @@ import { LinksGenerator } from "./LinksGenerator";
 
 export const FooterLinks = () => {
   const pressMediaElements = linksData["Press & Media"].map((linkItemData) => (
-    <LinksGenerator name={linkItemData.name} url={linkItemData.url} />
+    <LinksGenerator key={`press-${linkItemData.name}`} name={linkItemData.name} url={linkItemData.url} />
   ));
 
-  const quickLinksElements = linksData["Quick Links"].map((linkItemData) => (
-    <LinksGenerator name={linkItemData.name} url={linkItemData.url} />
+  const quickLinksElements = linksData["Quick Links"].map((linkItemData, id) => (
+    <LinksGenerator key={`quick-${linkItemData.name}`} name={linkItemData.name} url={linkItemData.url} />
   ));
   const resourcesLinksElements = linksData["Resources Links"].map(
-    (linkItemData) => (
-      <LinksGenerator name={linkItemData.name} url={linkItemData.url} />
+    (linkItemData, id) => (
+      <LinksGenerator key={`resource-${linkItemData.name}`} name={linkItemData.name} url={linkItemData.url} />
     )
   );
 

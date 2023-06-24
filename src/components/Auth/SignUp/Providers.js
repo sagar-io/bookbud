@@ -35,19 +35,26 @@ const Providers = (props) => {
   }
   async function handleGoogleSignUp() {
     const status = await props.firebase.signInWithGoogle();
-    console.log(status);
+    props.firebase.writeUserDataToDB(
+      status.user.uid,
+      status.user.displayName,
+      status.user.email,
+      status.user.photoURL
+    );
     goTo(ROUTES.HOME);
   }
   async function handleGitHubSignUp() {
     try {
-      const result = await props.firebase.signInWithGithub();
-      console.log(result);
-      props.firebase.auth["allowWithoutEmailVerification"] = true;
+      const status = await props.firebase.signInWithGithub();
+      props.firebase.writeUserDataToDB(
+        status.user.uid,
+        status._tokenResponse.screenName,
+        status._tokenResponse.email,
+        status.user.photoURL
+      );
       goTo(ROUTES.HOME);
     } catch (error) {
-      console.log("Couldn't Signin with Github", error);
-      console.log("Error email", error.email);
-      console.log("Error provider", error.credential);
+      // console.log("Couldn't Signin with Github", error);
     }
   }
 };

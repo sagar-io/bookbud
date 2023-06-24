@@ -1,5 +1,5 @@
 import {Routes, Route} from 'react-router-dom'
-import { useEffect, useState, createContext } from 'react';
+import { useEffect, useState } from 'react';
 import { withFirebase } from '../Firebase';
 import Navigation from '../Navigation'
 import '../../styles/css/main.css'
@@ -13,9 +13,11 @@ import AccountPage from '../Pages/Account';
 import AdminPage from '../Admin';
 import UploadPage from '../Pages/Uploader'
 import {AuthUserContext} from '../Session'
-import { TopLogo } from '../Top Logo';
+import TopLogo from '../Top Logo';
 import Providers from '../Auth/SignUp/Providers';
 import { SignUpWithEmail } from '../Auth/SignUp/SignUpWithEmail';
+import Profile from '../Pages/Profile';
+import ErrorPage from '../ErrorPage';
 
 const App = (props) => {
     const [authUser, setAuthUser] = useState(null)
@@ -42,12 +44,14 @@ const App = (props) => {
                     <Route path='/signup' element={<Providers/>}/>
                     <Route path='/signup/sign-up-with-email' element={<SignUpWithEmail/>}/>
                 </Route>
+                <Route path={ROUTES.PROFILE} element={<Profile/>}/>
                 <Route path={ROUTES.LANDING} element={<LandingPage />}/>
                 <Route path={ROUTES.HOME} element={<HomePage />}/>
                 <Route path={ROUTES.UPLOAD} element={<UploadPage/>}/>
                 <Route path={ROUTES.ACCOUNT} element={<AccountPage />}/>
                 <Route path={ROUTES.ADMIN} element={<AdminPage />}/>
                 <Route path={ROUTES.PASSWORD_FORGET} element={<PasswordForgetPage />}/>
+                <Route path='/*' element={<ErrorPage />}/>
             </Routes>
         </div>
         </AuthUserContext.Provider>

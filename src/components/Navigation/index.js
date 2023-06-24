@@ -15,34 +15,17 @@ const Navigation = () => (
 const AuthNavigation = () => (
   <nav className="main-nav">
     <ul>
-      <li className="line-hover">
-        <NavLink to={ROUTES.LANDING} style={styles}>
-          Landing
-        </NavLink>
-      </li>
-      <li className="line-hover">
-        <NavLink to={ROUTES.HOME} style={styles}>
-          Home
-        </NavLink>
-      </li>
-      <li className="line-hover">
-        <NavLink to={ROUTES.UPLOAD} style={styles}>
-          Upload
-        </NavLink>
-      </li>
-      <li className="nav-settings">
-        <IoSettingsOutline className="icon" />
-        <ul>
-          <li>
-            <NavLink to={ROUTES.ACCOUNT} style={styles}>
-              Account
-            </NavLink>
-          </li>
-          <li>
-            <SignOutButton />
-          </li>
-        </ul>
-      </li>
+      <NavLink to={ROUTES.LANDING} style={styles}>
+        <li className="line-hover">Landing</li>
+      </NavLink>
+
+      <NavLink to={ROUTES.HOME} style={styles}>
+        <li className="line-hover">Home</li>
+      </NavLink>
+
+      <NavLink to={ROUTES.UPLOAD} style={styles}>
+        <li className="line-hover">Upload</li>
+      </NavLink>
     </ul>
   </nav>
 );
@@ -50,16 +33,13 @@ const AuthNavigation = () => (
 const NonAuthNavigation = () => (
   <nav className="main-nav">
     <ul>
-      <li className="line-hover">
-        <NavLink to={ROUTES.LANDING} style={styles}>
-          Landing
-        </NavLink>
-      </li>
-      <li className="line-hover">
-        <NavLink to={ROUTES.SIGN_IN} style={styles}>
-          Sign In
-        </NavLink>
-      </li>
+      <NavLink to={ROUTES.LANDING} style={styles}>
+        <li className="line-hover">Landing</li>
+      </NavLink>
+
+      <NavLink to={ROUTES.SIGN_IN} style={styles}>
+        <li className="line-hover">Sign In</li>
+      </NavLink>
     </ul>
   </nav>
 );

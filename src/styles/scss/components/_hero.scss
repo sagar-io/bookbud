@@ -72,6 +72,10 @@ font-weight: bold;
 
 .start-btn {
     margin-top: 4.5rem;
+
+    @media (max-width:500px) {
+      margin-top: 3rem;
+    }
 }
 
 
