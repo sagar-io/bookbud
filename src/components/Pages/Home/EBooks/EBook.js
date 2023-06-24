@@ -38,7 +38,7 @@ const EBook = (props) => {
       if (
         props.firebase.auth.currentUser.providerData[0].providerId == "github.com"
         ||
-        props.firebase.auth.allowWithoutEmailVerification
+        props.firebase.auth.currentUser.emailVerified
       ) {
         setIsDownloading(true);
         props.firebase.downloadFile(
